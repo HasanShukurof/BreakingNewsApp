@@ -8,13 +8,13 @@ import com.hasanshukurov.breakingnewsapp.model.Article
 interface ArticleDao {
 
 
-    //TODO: birincideki LONG yazisini sil gorek ne olur ?
+    // birincideki LONG yazisini sil gorek ne olur ?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(article: Article) : Long
 
     @Query("SELECT * FROM articlesTable")
-    fun  getAllArticles(): LiveData<List<Article>>
+    suspend fun  getAllArticles(): List<Article>
 
     @Delete
     suspend fun deleteArticle(article: Article)

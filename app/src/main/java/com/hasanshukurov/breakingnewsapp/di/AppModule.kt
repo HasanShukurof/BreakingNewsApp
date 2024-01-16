@@ -43,24 +43,28 @@ object AppModule {
         return retrofit.create(NewsApi::class.java)
 
     }
+
 /*
     @Provides
     @Singleton
-    fun injectDataBase(@ApplicationContext context: Context){
-        Room.databaseBuilder(context,ArticleDatabase::class.java,"articleDB")
-            .build()
-    }
+    fun injectRepo(api: NewsApi,db: ArticleDao) = NewsRepository(api,db)
 
     @Provides
     @Singleton
-    fun injectDao(db: ArticleDatabase) {
+    fun injectDataBase(@ApplicationContext context: Context) = Room
+        .databaseBuilder(context,ArticleDatabase::class.java,"articleDB")
+        .build()
+
+
+    @Provides
+    @Singleton
+    fun injectDao(db: ArticleDatabase) =
         db.articleDao()
-    }
 
-    @Provides
-    @Singleton
-    fun injectRepo(api: NewsApi) = NewsRepository(api)
 
  */
+
+
+
 
 }
